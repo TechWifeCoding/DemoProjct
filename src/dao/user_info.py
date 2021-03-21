@@ -30,14 +30,17 @@ class UserInfoDao:
 
     @classmethod
     def create_user(cls, username, password):
-        sql = 'insert into user_info (username, password) values (:username, :password)'
+        # sql = 'insert into user_info (username, password) values (:username, :password)'
         params = {
             'username': username,
             'password': password,
         }
-        cls.db.query(sql, params)
-
+        table = cls.db['user_info']
+        return table.insert(params)
 
 if __name__ == '__main__':
-    res = UserInfoDao.get_by_uid(1)
+    res = UserInfoDao.create_user(
+        "chenxi3", "123123"
+    )
     print(res)
+

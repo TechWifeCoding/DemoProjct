@@ -11,13 +11,13 @@ class UserTokenDao:
 
     @classmethod
     def create_token(cls, uid, token, expire_time):
-        sql = 'insert into user_token (uid, token, expire_time) values (:uid, :token, :expire_time)'
+        # sql = 'insert into user_token (uid, token, expire_time) values (:uid, :token, :expire_time)'
         params = {
             'uid': uid,
             'token': token,
             'expire_time': expire_time,
         }
-        cls.db.query(sql, params)
+        cls.db['user_token'].insert(params)
 
     @classmethod
     def get_token_info(cls, token):
