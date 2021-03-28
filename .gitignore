@@ -1,4 +1,6 @@
 .idea
 venv
-.env
+src/.env
 *.pyc
+.env
+mysql_data
